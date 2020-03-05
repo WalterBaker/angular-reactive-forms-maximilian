@@ -14,20 +14,11 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   usernameId = 'username';
-  usernamePath = 'username' // Change if necessary.
-
-  forbiddenUsernames = ['Chris', 'Anna'];
-
-  forbiddenNames(control: FormControl): {[s: string]: boolean} {
-    if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
-      return {'nameIsForbidden': true};
-    }
-    return null;
-  }
+  usernamePath = 'username';
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'username' : new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)])
+      'username' : new FormControl()
     });   
   }
 
@@ -38,18 +29,5 @@ export class AppComponent implements OnInit {
 
   IsFormInvalid(){
     return (!this.signupForm.valid && this.signupForm.touched);
-  }
-
-  InvalidAndTouched(){
-    return (!this.signupForm.get(this.usernamePath).valid && 
-             this.signupForm.get(this.usernamePath).touched);
-  }
-
-  ValueIsRequired(){
-      return this.signupForm.get(this.usernamePath).errors['required'];
-  }
-
-  ValueIsForbidden(){
-      return this.signupForm.get(this.usernamePath).errors['nameIsForbidden'];
   }
 }

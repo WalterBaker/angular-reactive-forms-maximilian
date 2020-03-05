@@ -7,19 +7,10 @@
         <div class="form-group">
           <label for='username'>Username</label>     
           <input
-              formControlName="username" 
+              formControlName="username"
               class="form-control"
-              type="text"    
-              id="username"> 
-
-
-          <span
-            *ngIf=InvalidAndTouched()
-            class="help-block">
-              
-            <span *ngIf=ValueIsRequired()>Value required</span>
-            <span *ngIf=ValueIsForbidden()>Value forbidden</span>
-          </span>
+              type="text"                 
+              id="username">                  
         </div>
 
 
