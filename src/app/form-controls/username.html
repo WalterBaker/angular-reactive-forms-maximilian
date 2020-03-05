@@ -1,0 +1,18 @@
+<div [formGroupName]="formGroupId">
+  <div class="form-group">
+      <label [for]='id'>Username</label>     
+      <input
+          [formControlName]="id" 
+          class="form-control"
+          type="text"    
+          [id]="id"> 
+
+      <span
+        *ngIf="InvalidAndTouched()"
+        class="help-block">
+          
+        <span *ngIf="ValueIsRequired()">Value required</span>
+        <span *ngIf="ValueIsForbidden()">Value forbidden</span>
+      </span>
+  </div>
+</div>

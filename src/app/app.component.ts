@@ -18,9 +18,10 @@ export class AppComponent implements OnInit {
     this.signupForm = new FormGroup({});
 
     // Username
+    /*
     this.username = new Username(this.signupForm);
     this.signupForm.addControl(this.username.id, this.username.formControl);
-
+    */
   }
 
   onSubmit(){

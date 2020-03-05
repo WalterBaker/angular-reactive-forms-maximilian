@@ -5,6 +5,7 @@
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     
         <!-- Username-->
+        <!--
         <div class="form-group">
           <label [for]='username.id'>Username</label>     
           <input
@@ -22,6 +23,8 @@
             <span *ngIf="username.ValueIsForbidden()">Value forbidden</span>
           </span>
         </div>
+        -->
+        <app-username [parentForm]="signupForm"></app-username>
 
 
         <!-- Error Message -->

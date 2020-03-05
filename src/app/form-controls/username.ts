@@ -1,18 +1,38 @@
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-export class Username {
+@Component({
+  selector: 'app-username',
+  templateUrl: './username.html'
+})
+export class Username implements OnInit {
 
-    public parentForm: FormGroup;
-
-    public id: string = 'username';
-    public path: string = this.id;
+    // parentForm is for module data passing
+    @Input() public parentForm: FormGroup;
 
     public formControl: FormControl;
+    public id: string = 'username';
 
+    public formGroup: FormGroup;
+    public formGroupId: string = "usernameGroup"
+    public path: string = this.formGroupId + ' ' + this.id;
+
+    ngOnInit() {
+      this.formControl = new FormControl(null, [Validators.required, this.validatorForbiddenNames.bind(this)]);
+      this.formGroup = new FormGroup({});
+      this.formGroup.addControl(this.id, this.formControl);
+
+      // We add the FormGroup to the parent form.
+      // 
+      this.parentForm.addControl(this.formGroupId, this.formGroup);
+    }
+
+    /*
     constructor(parentForm: FormGroup) {
         this.parentForm = parentForm;
         this.formControl = new FormControl(null, [Validators.required, this.validatorForbiddenNames.bind(this)]);
     }    
+    */
 
     /*
     ngOnInit() {
